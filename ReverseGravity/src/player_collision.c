@@ -34,6 +34,42 @@ int is_on_speed_tile(void) {
     }
     return 0; // 안 닿음
 }
+/*
+int is_on_slow_tile(void) {
+    int cx = player.pos.x + player.pos.w / 2;
+    int check_y = 0;
+
+    if (player.gravity_inverted) {
+        check_y = player.pos.y - 2; 
+    } else {
+        check_y = player.pos.y + player.pos.h + 2; 
+    }
+
+    int tx = cx / TILE_SIZE;
+    int ty = check_y / TILE_SIZE;
+
+    if (get_tile_at(tx, ty) == TILE_SLOW) {
+        return 1;
+    }
+    return 0;
+}
+*/ // --> 슬로우 타일 벽처리
+int is_on_slow_tile(void) {
+    int start_tx = player.pos.x / TILE_SIZE;
+    int end_tx   = (player.pos.x + player.pos.w - 1) / TILE_SIZE;
+    int start_ty = player.pos.y / TILE_SIZE;
+    int end_ty   = (player.pos.y + player.pos.h - 1) / TILE_SIZE;
+
+    // 플레이어 몸이 걸쳐있는 모든 타일을 확인
+    for (int ty = start_ty; ty <= end_ty; ty++) {
+        for (int tx = start_tx; tx <= end_tx; tx++) {
+            if (get_tile_at(tx, ty) == TILE_SLOW) {
+                return 1; // 닿았다!
+            }
+        }
+    }
+    return 0;
+}
 
 // ... (아래는 기존 충돌 함수들 유지) ...
 

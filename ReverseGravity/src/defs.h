@@ -34,7 +34,7 @@
 #define TILE_START 8
 #define TILE_GOAL 9
 #define TILE_SPEED 10         // ★ [추가] 속도 증가 타일
-
+#define TILE_SLOW 11
 // ----------------------------------------
 // 구조체 정의
 // ----------------------------------------
@@ -90,7 +90,7 @@ extern Mix_Music *bgm;
 extern Mix_Chunk *death_effect;
 
 extern int g_map_data[MAP_HEIGHT][MAP_WIDTH];
-extern SDL_Texture* g_tile_textures[11]; // ★ [수정] 10 -> 11
+extern SDL_Texture* g_tile_textures[12]; // ★ [수정] 12 -->>맵 배열 원소 개수 각 이미지
 
 extern SDL_Texture* player_texture_normal;
 extern SDL_Texture* player_texture_reverse;

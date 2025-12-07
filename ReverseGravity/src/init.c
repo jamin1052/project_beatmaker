@@ -19,7 +19,7 @@ Entity player;
 Camera camera = {0, 0};
 
 // 타일 텍스처 전역 정의 (defs.h 에 extern 있음)
-SDL_Texture* g_tile_textures[11]; // ★ [수정] 10 -> 11
+SDL_Texture* g_tile_textures[12]; // ★ [수정] 10 -> 11 ->12
 
 SDL_Texture* player_texture_normal = NULL;
 SDL_Texture* player_texture_reverse = NULL;
@@ -101,8 +101,9 @@ void InitSDL(void) {
 
     // ★ [추가] Speed 타일 이미지 로드 (파일 경로 확인 필수!)
     load_tile_texture(&g_tile_textures[TILE_SPEED], "./gfx/Speed.png");
-
+    load_tile_texture(&g_tile_textures[TILE_SLOW], "./gfx/Slow.png");
     // 사운드 초기화
+    
     if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0) {
         printf("SDL_mixer 초기화 실패: %s\n", Mix_GetError());
         exit(1);

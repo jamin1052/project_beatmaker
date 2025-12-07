@@ -21,6 +21,10 @@ void gravity_inverted(double dt)
     if (is_on_speed_tile()) {
         current_speed *= 1.5;
     }
+    
+    if (is_on_slow_tile()) {
+        current_speed *= 0.5;
+    }
 
     // 공중에 떠 있을 때만 속도 적용
     if (!player.is_grounded) {

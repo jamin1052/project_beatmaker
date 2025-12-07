@@ -25,6 +25,10 @@ void move_player_horzontal(double dt)
     if (is_on_speed_tile()) {
         current_speed *= 2.0;
     }
+    
+    if (is_on_slow_tile()) {
+        current_speed *= 0.5;
+    }
 
     player.v_x = dir * current_speed;
 
