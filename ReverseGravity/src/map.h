@@ -3,8 +3,8 @@
 
 #include "defs.h"
 
-#define ROOM_ROWS 2
-#define ROOM_COLS 2
+#define ROOM_ROWS 3
+#define ROOM_COLS 4
 
 extern int current_room_row;
 extern int current_room_col;
