@@ -21,7 +21,7 @@ GameState game_state = STATE_TITLE;
 int main(void) {
     InitMemorySet(); 
     InitSDL();
-    LoadRoom(0, 0);     // ★ 먼저 방을 로드해야 함
+    LoadRoom(1, 1);     // ★ 먼저 방을 로드해야 함
     InitPlayer();
     title_init();    
     
