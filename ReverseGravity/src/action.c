@@ -35,6 +35,8 @@ void ActGame(void)
     // ---------------------------------------
     if (app.key_space && player.is_grounded)
     {
+        Mix_PlayChannel(-1, spin_jump_effect, 0);
+        
         player.gravity_inverted = !player.gravity_inverted;
 
         if (player.gravity_inverted)

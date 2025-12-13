@@ -12,6 +12,7 @@
 
 Mix_Music* interface_bgm = NULL;
 Mix_Music *gameplayBGM = NULL;
+Mix_Chunk* spin_jump_effect = NULL;
 Mix_Chunk* checkpoint_effect = NULL;
 Mix_Chunk* death_effect = NULL;
 Mix_Music *ending_bgm = NULL;
@@ -134,6 +135,11 @@ void InitSDL(void) {
         printf("gameplayBGM.wav 로드 실패: %s\n", Mix_GetError());
     }
 
+    spin_jump_effect = Mix_LoadWAV("sound/spin_jump.wav");
+    if (!spin_jump_effect) {
+        printf("spin_jump.wav 로드 실패: %s\n", Mix_GetError());
+    }
+
     checkpoint_effect = Mix_LoadWAV("sound/checkpoint.wav");
     if (!checkpoint_effect) {
         printf("checkpoint.wav 로드 실패: %s\n", Mix_GetError());
@@ -157,10 +163,45 @@ void InitSDL(void) {
 // ----------------------------------------
 void QuitSDL(void)
 {
-    if (app.renderer) SDL_DestroyRenderer(app.renderer);
-    if (app.window) SDL_DestroyWindow(app.window);
+    if (spin_jump_effect) {
+        Mix_FreeChunk(spin_jump_effect);
+        spin_jump_effect = NULL;
+    }
+
+    if (checkpoint_effect) {
+        Mix_FreeChunk(checkpoint_effect);
+        checkpoint_effect = NULL;
+    }
+
+    if (death_effect) {
+        Mix_FreeChunk(death_effect);
+        death_effect = NULL;
+    }
+
+    // --- 배경음 해제 ---
+    if (interface_bgm) {
+        Mix_FreeMusic(interface_bgm);
+        interface_bgm = NULL;
+    }
+
+    if (gameplayBGM) {
+        Mix_FreeMusic(gameplayBGM);
+        gameplayBGM = NULL;
+    }
+
+    if (ending_bgm) {
+        Mix_FreeMusic(ending_bgm);
+        ending_bgm = NULL;
+    }
+
+    // --- SDL 시스템 종료 ---
+    Mix_CloseAudio();
     TTF_Quit();
     IMG_Quit();
+
+    if (app.renderer) SDL_DestroyRenderer(app.renderer);
+    if (app.window) SDL_DestroyWindow(app.window);
+
     SDL_Quit();
 }
 
