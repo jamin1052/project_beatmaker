@@ -5,17 +5,6 @@
 #include <SDL2/SDL_ttf.h>
 
 
-static const char* story_text =
-"드디어 컴퓨터 내부에 들어왔어.\n"
-"백신들을 뚫고 컴퓨터를 해킹하자!";
-
-static const char* controls_text =
-"[이동] ← →\n"
-"[점프] ↓\n"
-"[중력 반전] SPACE\n"
-"[리셋] R";
-
-
 extern App app;
 extern TTF_Font* font_normal;
 extern TTF_Font* font_selected;
