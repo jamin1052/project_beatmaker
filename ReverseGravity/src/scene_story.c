@@ -53,12 +53,14 @@ void story_init(void)
         // ---- 텍스트(안내 문구) 생성 시작 ----
     SDL_Color white = {255, 255, 255, 255};
     const char* hint = 
+        "\n"
         "       Hello, player~. I'm virus!  \n"
         "       We're going to hack this computer. Let's go~ \n "
-        "       If you want to start, press space button! \n"
+        "       If you want to start, press spacebar! \n"
         "\n"
-        "\n"
-        "       -> : right, <- : left, spacebar : reverse \n";
+        "       -> : Right \n"
+        "       <- : Left \n"
+        "       Spacebar : Gravity Reverse \n";
     // 말풍선 폭 안에서 자동 줄바꿈
     int wrap = bubble.w - padding * 2;
 
