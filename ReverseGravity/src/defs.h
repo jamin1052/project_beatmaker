@@ -108,6 +108,7 @@ extern Mix_Music *bgm;
 extern Mix_Music *gameplayBGM;
 extern Mix_Chunk *checkpoint_effect;
 extern Mix_Chunk *death_effect;
+extern Mix_Music *ending_bgm;
 
 extern int g_map_data[MAP_HEIGHT][MAP_WIDTH];
 extern SDL_Texture* g_tile_textures[16]; // ★ [수정] 12 -->>맵 배열 원소 개수 각 이미지

@@ -164,6 +164,8 @@ void check_spike_collision(void) {
 }
 
 void check_goal_reach(void) {
+    static int goal_triggered = 0;
+
     int tx1 = player.pos.x / TILE_SIZE;
     int ty1 = player.pos.y / TILE_SIZE;
     int tx2 = (player.pos.x + player.pos.w) / TILE_SIZE;
@@ -171,6 +173,10 @@ void check_goal_reach(void) {
 
     if (g_map_data[ty1][tx1] == TILE_GOAL || g_map_data[ty1][tx2] == TILE_GOAL ||
         g_map_data[ty2][tx1] == TILE_GOAL || g_map_data[ty2][tx2] == TILE_GOAL) {
+        goal_triggered = 1;
+
+        Mix_HaltMusic();
+        Mix_PlayMusic(ending_bgm, 0); // loop = 0
         InitEnding();
         game_state = STATE_ENDING;
     }

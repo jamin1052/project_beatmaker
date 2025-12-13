@@ -14,6 +14,7 @@ Mix_Music* interface_bgm = NULL;
 Mix_Music *gameplayBGM = NULL;
 Mix_Chunk* checkpoint_effect = NULL;
 Mix_Chunk* death_effect = NULL;
+Mix_Music *ending_bgm = NULL;
 
 // 전역 변수 정의
 App app;
@@ -143,6 +144,11 @@ void InitSDL(void) {
     if (!death_effect) {
         printf("사운드 로드 실패: %s\n", Mix_GetError());
         exit(1);
+    }
+
+    ending_bgm = Mix_LoadMUS("sound/ending.wav");
+    if (!ending_bgm) {
+        printf("ending.wav 로드 실패: %s\n", Mix_GetError());
     }
 }
 

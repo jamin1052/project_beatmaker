@@ -51,7 +51,6 @@ int main(void) {
             case STATE_GAME: ActGame(); DrawGame(); break;
             case STATE_GAMEOVER: ActGameOver(); DrawGameOver(); break;
             case STATE_ENDING:
-                if (Mix_PlayingMusic()) Mix_HaltMusic();
                 DrawEnding();
                 break;
             case STATE_EXIT: QuitSDL(); exit(0);
