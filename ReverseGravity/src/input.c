@@ -164,6 +164,7 @@ void ResetInputFlags(void)
     app.key_down = 0;
     app.key_left = 0;
     app.key_right = 0;
+    app.key_r = 0; 
     app.key_space = 0;
     app.key_enter = 0;
 
