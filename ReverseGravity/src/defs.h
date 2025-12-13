@@ -135,6 +135,8 @@ extern Mix_Music *gameplayBGM;
 
 typedef enum {
     STATE_TITLE,
+    STATE_STORY,
+    STATE_CONTROLS,
     STATE_GAME,
     STATE_GAMEOVER,
     STATE_ENDING,
