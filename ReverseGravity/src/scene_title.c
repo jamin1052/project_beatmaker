@@ -1,4 +1,5 @@
 #include "scene_title.h"
+#include "scene_story.h"
 #include "defs.h"
 #include "init.h"
 #include <SDL2/SDL.h>
@@ -46,7 +47,9 @@ void title_update()
         if (menu_index == 0){
             Mix_HaltMusic();       // ★ 타이틀 음악 정지
             ResetInputFlags();     // ← 안전하게 입력만 초기화
-            game_state = STATE_GAME;
+            
+            story_init(); //story
+            game_state = STATE_STORY;
         }
         else
             game_state = STATE_EXIT;
@@ -56,40 +59,6 @@ void title_update()
     }
 }
 
-// void title_render()
-// {
-//     SDL_RenderCopy(app.renderer, title_image, NULL, NULL);
-
-//     SDL_Color normal   = {255, 255, 255, 255};
-//     SDL_Color selected = {255, 255, 0, 255};
-
-//     // START
-//     TTF_Font* font_s = (menu_index == 0 ? font_selected : font_normal);
-//     SDL_Color col_s  = (menu_index == 0 ? selected : normal);
-
-//     SDL_Surface* s_start = TTF_RenderText_Solid(font_s, "START", col_s);
-//     SDL_Texture* tex_start = SDL_CreateTextureFromSurface(app.renderer, s_start);
-
-//     // EXIT
-//     TTF_Font* font_e = (menu_index == 1 ? font_selected : font_normal);
-//     SDL_Color col_e  = (menu_index == 1 ? selected : normal);
-
-//     SDL_Surface* s_exit = TTF_RenderText_Solid(font_e, "EXIT", col_e);
-//     SDL_Texture* tex_exit = SDL_CreateTextureFromSurface(app.renderer, s_exit);
-
-//     // 위치 설정
-//     SDL_Rect r_start = { 240, 300, s_start->w, s_start->h };
-//     SDL_Rect r_exit  = { 240, 360, s_exit->w, s_exit->h };
-
-//     SDL_RenderCopy(app.renderer, tex_start, NULL, &r_start);
-//     SDL_RenderCopy(app.renderer, tex_exit, NULL, &r_exit);
-
-//     SDL_FreeSurface(s_start);
-//     SDL_FreeSurface(s_exit);
-
-//     SDL_DestroyTexture(tex_start);
-//     SDL_DestroyTexture(tex_exit);
-// }
 
 void title_render()
 {

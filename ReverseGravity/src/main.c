@@ -11,6 +11,7 @@
 #include "input.h"
 #include "scene_title.h"
 #include "map.h"
+#include "scene_story.h"
 
 
 Mix_Music *bgm;
@@ -48,6 +49,7 @@ int main(void) {
         switch (game_state) 
         {
             case STATE_TITLE: title_update(); title_render(); break;
+            case STATE_STORY: story_update(); story_render(); break;
             case STATE_GAME: ActGame(); DrawGame(); break;
             case STATE_GAMEOVER: ActGameOver(); DrawGameOver(); break;
             case STATE_ENDING:

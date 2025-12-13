@@ -214,6 +214,7 @@ void InitPlayer(void) {
     player.last_string_col = -1;
 
     player.has_checkpoint = 0;
+    player.last_checkpoint_id = -1;
 }
 
 void InitTiles(void) {}
