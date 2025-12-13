@@ -106,6 +106,7 @@ extern App app;
 extern Entity player;
 extern Mix_Music *bgm;
 extern Mix_Music *gameplayBGM;
+extern Mix_Chunk* spin_jump_effect;
 extern Mix_Chunk *checkpoint_effect;
 extern Mix_Chunk *death_effect;
 extern Mix_Music *ending_bgm;

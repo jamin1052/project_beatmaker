@@ -2,7 +2,7 @@
 CC = gcc
 
 # Target name
-TARGET = dodger
+TARGET = GH
 
 # Add compile options
 CFLAGS += `sdl2-config --cflags` -g -lefence
