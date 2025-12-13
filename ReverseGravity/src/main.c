@@ -12,6 +12,7 @@
 #include "scene_title.h"
 #include "map.h"
 #include "scene_story.h"
+#include "player_death.h"
 
 
 Mix_Music *bgm;

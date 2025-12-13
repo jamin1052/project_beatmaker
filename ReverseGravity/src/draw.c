@@ -128,32 +128,16 @@ void DrawGame(void) {
 // ----------------------------------------
 // DrawGameOver 함수
 // ----------------------------------------
-void DrawGameOver(void) 
+void DrawGameOver(void)
 {
-    SDL_SetRenderDrawColor(app.renderer, 0x00, 0x00, 0x00, 0xFF);
-    SDL_RenderClear(app.renderer);
+    SDL_Rect dst = {
+        0,
+        0,
+        SCREEN_WIDTH,
+        SCREEN_HEIGHT
+    };
 
-    const char* msg = "Press R to Restart";
-    SDL_Color color = {255, 255, 255, 255};  
-
-    SDL_Surface* surface = TTF_RenderText_Solid(font_normal, msg, color);
-    if (!surface) {
-        printf("TTF_RenderText_Solid error: %s\n", TTF_GetError());
-        return;
-    }
-
-    SDL_Texture* texture = SDL_CreateTextureFromSurface(app.renderer, surface);
-
-    SDL_Rect dest;
-    dest.w = surface->w;
-    dest.h = surface->h;
-    dest.x = (SCREEN_WIDTH - dest.w) / 2;   
-    dest.y = (SCREEN_HEIGHT - dest.h) / 2;  
-
-    SDL_RenderCopy(app.renderer, texture, NULL, &dest);
-
-    SDL_FreeSurface(surface);
-    SDL_DestroyTexture(texture);
+    SDL_RenderCopy(app.renderer, death_texture, NULL, &dst);
 }
 
 // ----------------------------------------

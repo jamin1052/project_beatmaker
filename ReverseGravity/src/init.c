@@ -35,6 +35,8 @@ Projectile g_projectiles[MAX_PROJECTILES];  // 투사체 배열 실제 생성
 TTF_Font* font_normal = NULL;
 TTF_Font* font_selected = NULL;
 
+SDL_Texture* death_texture = NULL;
+
 // ----------------------------------------
 // 메모리 초기화
 // ----------------------------------------
@@ -78,6 +80,12 @@ void InitSDL(void) {
     // 이미지 초기화
     if (!(IMG_Init(IMG_INIT_PNG) & IMG_INIT_PNG)) { 
         printf("SDL_image 초기화 실패: %s\n", IMG_GetError()); exit(1); 
+    }
+
+    death_texture = IMG_LoadTexture(app.renderer, "./gfx/death.png");
+    if (!death_texture) {
+        printf("death.png 로드 실패: %s\n", IMG_GetError());
+        exit(1);
     }
 
     // TTF 폰트 시스템 초기화
@@ -192,6 +200,11 @@ void QuitSDL(void)
     if (ending_bgm) {
         Mix_FreeMusic(ending_bgm);
         ending_bgm = NULL;
+    }
+
+    if (death_texture) {
+        SDL_DestroyTexture(death_texture);
+        death_texture = NULL;
     }
 
     // --- SDL 시스템 종료 ---
